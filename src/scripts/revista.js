@@ -1,6 +1,6 @@
 function updateCountdown() {
     const now = new Date();
-    const startDate = new Date('2025-03-15T00:00:00'); // 1º de abril de 2025
+    const startDate = new Date('2025-04-07T00:00:00'); // 1º de abril de 2025
     const intervalMonths = 3; // A cada 3 meses
     let nextDate = startDate;
 
