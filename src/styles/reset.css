@@ -1,0 +1,79 @@
+/* Reset CSS */
+
+/* Remove margens e paddings padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", serif;
+    -webkit-tap-highlight-color: transparent; /* Remove o highlight ao tocar no mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ajuste para fontes responsivas */
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%; /* Evita zoom automático em iOS */
+}
+
+/* Estilos padrão para body */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    -webkit-user-select: none; /* Evita seleção acidental no mobile */
+    user-select: none;
+}
+
+/* Remove estilos padrão de listas */
+ul, ol {
+    list-style: none;
+}
+
+/* Remove decorações padrão de links */
+a {
+    text-decoration: none;
+    color: var(--color--black);
+}
+
+/* Define imagens responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Evita estilos padrões de botões */
+button, input, textarea, select {
+    font: inherit;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+/* Remove estilos padrão de botões no iOS */
+button {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+
+/* Evita movimentação excessiva no scroll */
+html, body {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Ajustes para iPhone notch e safe-area */
+@supports (padding: env(safe-area-inset-top)) {
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+}

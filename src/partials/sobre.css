@@ -1,0 +1,153 @@
+.sobre {
+    width: 100%;
+    max-width: 1280px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    position: relative;
+    height: auto;
+    padding: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+
+    @media (max-width: 768px){
+        flex-direction: column;   
+        padding: 5% 5% 10% 5%;
+    }
+
+    & .sobre-images{
+        width: 50%;
+        position: relative;
+        height: 550px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        @media (max-width: 768px){
+            width: 100%;
+            height: 400px;
+        }
+
+        & img:nth-child(1){
+            width: 95% ;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        & div{
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            bottom: 5%;
+            right: -5px;
+            border: 5px solid #fff;
+            background: #00000099;
+            backdrop-filter: blur(2px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            object-fit: contain;
+            padding: 20px;
+            box-shadow: 0 0 100px rgba(255, 255, 255, 0.9);
+
+            & img {
+                position: relative;
+                z-index: 2;
+            }
+
+            @media (max-width: 768px){
+                width: 150px;
+                height: 150px;
+                padding: 20px;
+            }
+        }
+    }
+
+    & .sobre-texts{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 25px;
+
+        @media (max-width: 768px){
+            width: 100%;
+        }
+
+        & span {
+            display: inline-block;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 1s, opacity 1s; /* Animação do aumento do número */
+        }
+
+        & span.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        & .sobre-numbers{
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+
+            & .sobre-info{
+                width: 100%;
+                display: flex;
+                box-shadow: 0 0 5px var(--color--yellow);
+                transition: all .2s ease;
+
+                &:hover {
+                    box-shadow: 0 0 5px var(--color--black);
+                    transform: scale(1.02);
+                }
+
+                &:hover .sobre-text{
+                    background-color: var(--color--black);
+                    color: var(--color--white);
+                }
+
+                & .sobre-text {
+                    width: 100%;
+                    background-color: var(--color--yellow);
+                    color: var(--color--black);
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 20px 15px;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0px;
+                    transition: all .2s ease;
+
+                    & h4 {
+                        text-transform: uppercase;
+                        font-weight: 300;
+                        font-size: 12px;
+
+                        @media (max-width: 768px){
+                            font-size: 10px;
+                        }
+                    }
+
+                    & span {
+                        font-size: 30px;
+                        font-weight: 400;
+
+                        @media (max-width: 768px){
+                            font-size: 26px;
+                        }
+                    }
+                }
+
+                & .sobre-bar {
+                    display: none;
+                }
+            }
+        }
+    }
+}

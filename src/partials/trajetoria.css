@@ -1,0 +1,154 @@
+.trajetoria {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+
+    & .trajetoria-background {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: var(--color--gray);
+        z-index: -1;
+    }
+
+    & .trajetoria-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5%;
+        width: 100%;
+        max-width: 1280px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 10% 5% 5% 5% ;
+        }
+
+        & h1 {
+            width: 60%;
+
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+        }
+    }
+
+    & .trajetoria-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 1280px;
+        position: relative;
+        width: 100%;
+        padding: 0 5% 5% 5%;
+        gap: 20px;
+
+        & .swiper {
+            width: 100%;
+            max-width: 1280px;
+            padding: 0 5% 5% 5%;
+        }
+        
+        & .swiper-slide {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            padding: 30px;
+            background-color: var(--color--white);
+        }
+        
+        & .swiper-slide h2 {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--color--yellow);
+        }
+        
+        & .swiper-slide p b {
+            color: #000;
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            padding: 10% 5%;
+        }
+
+        & .trajetoria-card {
+            padding: 30px;
+            background-color: var(--color--white);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+
+            & h2 {
+                font-size: 20px;
+                font-weight: 400;
+                color: var(--color--yellow);
+            }
+
+            & p b {
+                color: #000;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+.trajetoria-card:nth-child(1)::before {
+    content: '';
+    width: 0; /* Começa com a borda invisível */
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    background-color: var(--color--yellow);
+    transition: width 2s;
+}
+
+.trajetoria-card:nth-child(2)::before {
+    content: '';
+    width: 0; /* Começa com a borda invisível */
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    background-color: var(--color--yellow);
+    transition: width 2s;
+}
+
+.trajetoria-card:nth-child(3)::before {
+    content: '';
+    width: 0; /* Começa com a borda invisível */
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    background-color: var(--color--yellow);
+    transition: width 2s;
+}
+
+/* Adiciona a animação da borda quando o card estiver visível */
+.trajetoria-card.animate-border:nth-child(1)::before {
+    width: 35%; /* A borda do primeiro card vai de 0% a 35% */
+}
+
+.trajetoria-card.animate-border:nth-child(2)::before {
+    width: 60%; /* A borda do segundo card vai de 0% a 60% */
+}
+
+.trajetoria-card.animate-border:nth-child(3)::before {
+    width: 100%; /* A borda do terceiro card vai de 0% a 100% */
+}
+
+

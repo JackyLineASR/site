@@ -1,0 +1,117 @@
+.porque{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px; 
+
+    & .porque-top{
+        width: 100%;
+        max-width: 1280px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5% 5% 2% 5%;
+        position: relative;
+
+        @media (max-width: 768px){
+            flex-direction: column;
+            padding: 10% 5% 5% 5%;
+            gap: 20px;
+            align-items: flex-start;
+        }
+    }
+
+    & .porque-container {
+        width: 100%;
+        max-width: 1280px;
+        padding: 0% 5% 5% 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 15px;
+
+        & .porque-card{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--color--black);
+            gap: 50px;
+            padding: 0px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+
+            @media (max-width: 768px){
+                flex-direction: column-reverse;
+                gap: 30px;
+                padding: 0;
+            }
+
+            & .porque-card-texts{
+                width: 55%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-between;
+                height: auto;
+                gap: 60px;
+                padding: 50px;
+
+                @media (max-width: 768px){
+                    width: 100%;
+                    height: auto;
+                    gap: 30px;
+                    padding: 20px;
+                }
+
+                & .porque-card-texts-top{
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    gap: 20px;
+
+                    & .porque-card-texts-top-number{
+                        background-color: var(--color--yellow);
+                        padding: 10px 20px;
+                        border-radius: 500px;
+
+                        & span {
+                            font-weight: 600;
+                            color: var(--color--black);
+                        }
+                    }
+                }
+
+                & .porque-card-texts-top-texts{
+                    display: flex;
+                    align-items: flex-start;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 20px;
+
+                    & h1 {
+                        font-weight: 400;
+                    }
+                }
+            }
+
+            & .porque-card-image {
+                width: 45%;
+                height: 350px;
+
+                @media (max-width: 768px){
+                    width: 100%;
+                    height: 200px;
+                }
+
+                & img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}

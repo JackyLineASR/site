@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+.footer-gradient {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px; /* ajuste a altura conforme necessário */
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); /* degradê de preto */
+  z-index: 10;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+}
+
+.lamp {
+    width: 100px;
+    height: 100px;
+    background-image: url('/src/assets/lampada.png'); /* Ícone da lâmpada contorno */
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: lampSwing 0.2s ease-in-out infinite alternate, lampEffect 2s steps(1, end) forwards;
+}
+
+/* Animação de balançar */
+@keyframes lampSwing {
+    0% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes lampEffect {
+    15% {
+        background-image: url('/src/assets/lampada2.png'); /* Ícone da lâmpada preenchida */
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Esconder a preloader após a animação */
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+
+
+h1 {
+    font-size: 30px;
+    font-weight: 300;
+    color: var(--color--black);
+    line-height: 110%;
+
+    @media(max-width:768px){
+        font-size: 25px;
+    }
+
+    & b {
+        font-weight: 400;
+        background: linear-gradient(90deg, var(--color--yellow), var(--color--yellow--black));
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}
+
+p {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--color--black);
+    line-height: 120%;
+
+    @media(max-width:768px){
+        font-size: 16px;
+    }
+
+    & b {
+        font-weight: 400;
+        color: var(--color--yellow);
+    }
+}
+
+::-webkit-scrollbar{
+    width: 6px;
+    background-color: var(--color--black);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--color--gray);
+}   
+
+/* From Uiverse.io by Gaurang7717 */ 
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 150px;
+    height: 45px;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    gap: 10px;
+    position: fixed;
+    right: 25px;
+    bottom: 20px;
+    transition-duration: 0.3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: #00d757;
+    z-index: 19000;
+
+    &:hover {
+        transform: scale(0.95);
+    }
+
+    @media (max-width:768px){
+        right: 15px;
+        bottom: 15px;
+    }
+  }
+  
+  .sign {
+    width: 100%;
+    transition-duration: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sign svg {
+    width: 25px;
+  }
+  
+  .sign svg path {
+    fill: white;
+  }
+  .text {
+    position: relative;
+    color: white;
+    font-size: 1em;
+    font-weight: 400;
+    transition-duration: 0.3s;
+  }
+  
+  .Btn:hover {
+    border-radius: 40px;
+    transition-duration: 0.3s;
+  }
+  
+  .Btn:hover .sign {
+    transition-duration: 0.3s;
+  }
+  
+  .Btn:hover .text {
+    opacity: 1;
+    transition-duration: 0.3s;
+  }
+  .Btn:active {
+  }
+  
+
+/* Botão com fundo amarelo */
+
+.button-v1{
+    padding: 10px 10px 10px 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 50px;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    transition: all .3s ease-in-out;
+    color: var(--color--black);
+
+    @media(max-width: 768px){
+        font-size: 12px;
+    }
+
+    & i {
+        transition: all .3s ease-in-out;
+        background-color: #fff;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.button-v1::before{
+    content: '';
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    border-radius: 500px;
+    background-color: var(--color--yellow);
+    z-index: -1;
+    transition: all .3s ease-in-out;
+}
+
+.button-v1:hover::before{
+    width: 100%;
+}
+
+.button-v1:hover{
+    font-weight: 500;
+}
+
+.button-v1:hover i {
+    transform: rotate(-45deg);
+}
+
+/* Botão sem fundo */
+
+.button-v2{
+    padding: 10px 10px 10px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    transition: all .3s ease-in-out;
+    border-radius: 500px;
+    color: var(--color--black);
+
+    @media(max-width: 768px){
+        font-size: 12px;
+    }
+
+    & span {
+        position: relative;
+        background-color: #fff;
+        z-index: 1;
+        left: -10px;
+        padding: 2px 5px;
+        font-size: 16px;
+        font-weight: 400;
+        transition: all .3s ease-in-out;
+        border-radius: 500px;
+        border: 1px solid transparent;
+    }
+
+    & i {
+        transition: all .3s ease-in-out;
+        background-color: #fff;
+        width: 50px;
+        height: 50px;
+        font-size: 14px;
+        transform: rotate(-45deg);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--color--black);
+        position: relative;
+        z-index: -1;
+    }
+}
+
+.button-v2:hover i{
+    transform: rotate(0deg);
+    font-size: 16px;
+}
+
+.button-v2:hover span{
+    font-weight: 500;
+    border: 1px solid var(--color--black);
+    padding: 2px 10px;
+    background-color: var(--color--yellow);
+}
+
+/* Botão simples */
+
+.button-v3 {
+    padding: 10px 15px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    transition: all .3s ease-in-out;
+    border: 1px solid var(--color--black);
+    background: transparent;
+    position: relative;
+    color: var(--color--black);
+
+    @media(max-width: 768px){
+        font-size: 12px;
+    }
+}
+
+.button-v3::before {
+    content: '';
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color--yellow);
+    transition: all .4s ease-in-out;
+    z-index: -1;
+}
+
+.button-v3:hover::before{
+    width: 100%;
+}
+
+.button-v3:hover{
+    font-weight: 500;
+    transform: scale(0.96);
+}
+
+
+
+.button-v4 {
+    padding: 10px 15px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    transition: all .3s ease-in-out;
+    border: 1px solid var(--color--white);
+    background: transparent;
+    position: relative;
+    color: var(--color--white);
+
+    @media(max-width: 768px){
+        font-size: 12px;
+    }
+}
+
+.button-v4::before {
+    content: '';
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color--yellow);
+    transition: all .4s ease-in-out;
+    z-index: -1;
+}
+
+.button-v4:hover::before{
+    width: 100%;
+}
+
+.button-v4:hover{
+    font-weight: 500;
+    transform: scale(0.96);
+}

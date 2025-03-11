@@ -1,0 +1,141 @@
+.escolha{
+    width: 100%;
+    position: relative;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 50px;
+
+    @media (max-width: 768px){
+        gap: 30px;    
+        margin-bottom: 30px;
+    }
+
+    & .escolha-title{
+        max-width: 1280px;
+        width: 100%;
+        padding: 5% 5% 2.5% 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;    
+        
+        @media (max-width: 768px){
+            text-align: center;
+        }
+    }
+
+    & .escolha-button{
+        width: 100%;
+        max-width: 1280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2%;
+    }
+}
+
+.escolha-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.escolha-card {
+    display: flex;
+    flex-direction: column;
+    margin: 20px ;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.escolha-card:hover {
+    transform: scale(1.05);
+}
+
+.escolha-card-texts{
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: var(--color--gray);
+    clip-path: polygon(90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%, 0 0);
+    transition: all .2s ease;
+
+    & h1 {
+        font-size: 22px;
+    }
+
+    & p {
+        font-size: 16px;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+
+    }
+
+    @media (max-width: 768px){
+        width: 100%;
+        height: 200px;
+    }
+}
+
+.escolha-card-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color--black);
+    clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+    margin-bottom: 20px;
+}
+
+.escolha-card-icon i {
+    color: var(--color--yellow);
+    font-size: 30px;
+}
+
+
+.escolha-background{
+    width: 100%;
+    height: 100%;
+    background-image: url('/src/assets/background-escolha.png');
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.03;
+    z-index: -1;
+}
+
+.escolha-container::before{
+    content: '';
+    width: 80%;
+    height: 2px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 55%;
+    background-color: var(--color--black);
+    position: absolute;
+    z-index: -1;
+    opacity: 0.1;
+
+    @media (max-width: 768px){
+        height: 2px;
+        width: 100%;   
+        opacity: 0.1; 
+    }
+}
