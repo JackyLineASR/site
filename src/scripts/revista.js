@@ -5,6 +5,13 @@ const closeModal = document.querySelector(".modal .close");
 const downloadForm = document.getElementById("downloadForm");
 const loadingDiv = document.getElementById("loading");
 
+// Função para reiniciar o modal (exibe o formulário, oculta o loading e limpa os campos)
+function resetModal() {
+  downloadForm.style.display = "block";
+  loadingDiv.style.display = "none";
+  downloadForm.reset();
+}
+
 // Abre o modal ao clicar no botão "Baixar revista" na seção principal
 downloadButton.addEventListener("click", () => {
   console.log("Botão 'Baixar revista' clicado - abrindo modal");
@@ -25,12 +32,12 @@ window.addEventListener("click", (event) => {
   }
 });
 
-// Envio do formulário via EmailJS com delay de 2s para redirecionamento
+// Envio do formulário via EmailJS e redirecionamento com delay de 2 segundos
 downloadForm.addEventListener("submit", (e) => {
-  e.preventDefault(); // Impede o comportamento tradicional do formulário
+  e.preventDefault(); // Impede o comportamento padrão do formulário
   console.log("Formulário enviado");
 
-  // Exibe o loading e oculta o formulário para sinalizar que o envio está ocorrendo
+  // Exibe o loading e oculta o formulário enquanto o envio ocorre
   downloadForm.style.display = "none";
   loadingDiv.style.display = "block";
 
@@ -39,7 +46,7 @@ downloadForm.addEventListener("submit", (e) => {
   const telefone = document.getElementById("telefone").value;
   console.log("Valores coletados:", { email, telefone });
 
-  // Parâmetros para o template do EmailJS (confira que os nomes batem com os definidos no template)
+  // Parâmetros para o template do EmailJS (os nomes devem coincidir com os definidos no template)
   const templateParams = {
     user_email: email,
     user_telefone: telefone
@@ -52,15 +59,12 @@ downloadForm.addEventListener("submit", (e) => {
       console.log("EmailJS SUCCESS!", response.status, response.text);
     }, (error) => {
       console.log("EmailJS FAILED...", error);
-    })
-    // Mesmo que o usuário não esteja na tela, quando o envio terminar, o modal fecha.
-    .finally(() => {
-      downloadModal.style.display = "none";
-      console.log("EmailJS finalizado - modal fechado");
     });
 
-  // Aplica um delay de 2 segundos para o redirecionamento para a revista
+  // Após 2 segundos, fecha o modal, reinicia seu estado e redireciona para a revista
   setTimeout(() => {
+    downloadModal.style.display = "none";
+    resetModal();
     window.location.href = "https://drive.google.com/file/d/1eM4bpXji1HQTbV-gtXNxkHVMmW2zU_dS/view?usp=sharing";
   }, 2000);
 });
