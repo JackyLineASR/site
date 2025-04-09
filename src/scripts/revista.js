@@ -25,15 +25,12 @@ window.addEventListener("click", (event) => {
   }
 });
 
-// Envio do formulário via EmailJS, com redirecionamento forçado para a revista
+// Envio do formulário via EmailJS e redirecionamento imediato para a revista
 downloadForm.addEventListener("submit", (e) => {
-  e.preventDefault(); // Impede o comportamento padrão do formulário
+  e.preventDefault(); // Impede o envio tradicional do formulário
   console.log("Formulário enviado");
 
-  // Abre imediatamente uma nova janela para evitar bloqueios em dispositivos iOS
-  const newWindow = window.open("", '_blank');
-
-  // Exibe o loading e oculta o formulário para sinalizar que o envio está ocorrendo
+  // Opcional: exibe o loading e oculta o formulário
   downloadForm.style.display = "none";
   loadingDiv.style.display = "block";
 
@@ -42,24 +39,21 @@ downloadForm.addEventListener("submit", (e) => {
   const telefone = document.getElementById("telefone").value;
   console.log("Valores coletados:", { email, telefone });
 
-  // Parâmetros para o template do EmailJS (confira se os nomes combinam com os definidos no template)
+  // Parâmetros para o template do EmailJS (confira que os nomes batem com os definidos no template)
   const templateParams = {
     user_email: email,
     user_telefone: telefone
   };
   console.log("Enviando com os parâmetros:", templateParams);
 
+  // Envia os dados via EmailJS (a resposta não bloqueia o redirecionamento)
   emailjs.send('service_270g43i', 'template_ntwq9s3', templateParams)
     .then((response) => {
-      console.log("SUCCESS!", response.status, response.text);
-      // Atualiza a nova janela para o link da revista
-      newWindow.location.href = "https://drive.google.com/file/d/1eM4bpXji1HQTbV-gtXNxkHVMmW2zU_dS/view?usp=sharing";
-      downloadModal.style.display = "none";
+      console.log("EmailJS SUCCESS!", response.status, response.text);
     }, (error) => {
-      console.log("FAILED...", error);
-      alert("Erro ao enviar suas informações. Você será redirecionado para a revista mesmo assim.");
-      // Mesmo em caso de erro, redireciona a nova janela para a revista
-      newWindow.location.href = "https://drive.google.com/file/d/1eM4bpXji1HQTbV-gtXNxkHVMmW2zU_dS/view?usp=sharing";
-      downloadModal.style.display = "none";
+      console.log("EmailJS FAILED...", error);
     });
+
+  // Força o redirecionamento para a revista na mesma página, independente do resultado do EmailJS
+  window.location.href = "https://drive.google.com/file/d/1eM4bpXji1HQTbV-gtXNxkHVMmW2zU_dS/view?usp=sharing";
 });
