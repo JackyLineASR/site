@@ -66,6 +66,158 @@
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+    <style>
+        .formModal .revista {
+          position: relative;
+          font-family: Arial, sans-serif;
+        }
+        .formModal .revista-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px;
+        }
+        .formModal .revista-texts h1 {
+          font-size: 2em;
+        }
+        .formModal .revista-texts p {
+          margin: 10px 0;
+        }
+        .formModal .button-v4 {
+          padding: 10px 20px;
+          background-color: #0066cc;
+          border: none;
+          color: #fff;
+          cursor: pointer;
+          font-size: 1em;
+          transition: background-color 0.3s;
+        }
+        .formModal .button-v4:hover {
+          background-color: #0050a0;
+        }
+        .formModal .revista-image {
+          text-align: center;
+        }
+        .formModal .revista-image img {
+          max-width: 100%;
+          height: auto;
+        }
+      
+        /* Modal com estilização melhorada */
+        .formModal .modal {
+          display: none;
+          position: fixed;
+          z-index: 1000;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0,0,0,0.6);
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+        }
+        .formModal .modal-content {
+          background-color: #fff;
+          padding: 25px;
+          width: 100%;
+          max-width: 400px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+          text-align: left;
+          position: relative;
+        }
+        .formModal .modal-content h2 {
+          margin-top: 0;
+          width: 80%;
+          font-weight: 400;
+
+          margin-bottom: 15px;
+          line-height: 100%;
+          font-size: 1.3em;
+        }
+        .formModal .close {
+          position: absolute;
+          right: 25px;
+          top: 15px;
+          font-size: 28px;
+          cursor: pointer;
+          color: #333;
+        }
+        .formModal input[type="email"],
+        .formModal input[type="tel"] {
+          width: 100%;
+          padding: 10px;
+          margin: 10px 0;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-sizing: border-box;
+          font-size: 1em;
+        }
+        .formModal button[type="submit"] {
+          width: 100%;
+          padding: 10px;
+          background-color: var(--color--yellow);
+          text-transform: uppercase;
+          border: 1px solid #353535;
+          font-weight: 500;
+          color: #fff;
+          cursor: pointer;
+          font-size: 1em;
+          transition: background-color 0.3s, transform .2s ease-in-out;
+        }
+        .formModal button[type="submit"]:hover {
+          background-color: var(--color--yellow);
+          transform: scale(0.98);
+        }
+      
+        /* Loading animado */
+        .formModal #loading {
+          display: none;
+          text-align: center;
+          margin-top: 25px;
+        }
+        .formModal .spinner {
+          border: 4px solid #f3f3f3;
+          border-top: 4px solid var(--color--yellow);
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          animation: spin 1s linear infinite;
+          margin: 0 auto;
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      
+        /* Estilos para a contagem regressiva */
+        .formModal .revista-timer {
+          margin-top: 15px;
+        }
+        .formModal .revista-meses-dias {
+          display: flex;
+          gap: 15px;
+        }
+        .formModal .revista-meses,
+        .formModal .revista-dias {
+          text-align: center;
+        }
+      </style>
+      
+
+      <!-- Carregar a biblioteca do EmailJS -->
+      <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+        </script>
+
+      <script type="text/javascript">
+        // Inicializa o EmailJS com seu User ID (SUBSTITUA "YOUR_USER_ID" pelo seu ID real)
+        (function(){
+          emailjs.init("DszHNZJyZ7rgg_onQ");
+          console.log("EmailJS inicializado com o user id: service_sq01uhn");
+        })();
+      </script>
+
     <title>K'dea Construtora</title>
 </head>
 
@@ -613,51 +765,71 @@
         </div>
      </section> 
 
-     <section class="revista" id="revista">
-        <div class="revista-background"></div>
+ <!-- Seção Revista -->
+ <section class="revista" id="revista">
+    <div class="revista-background"></div>
+    <main class="revista-container">
+      <article class="revista-texts">
+        <h1 data-aos="fade-up" data-aos-delay="0">
+          Inspire-se com <br><b>nossas obras!</b>
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="300">
+          Baixe nosso <b>portfólio e conheça projetos</b> que transformam ideias em realidade.
+        </p>
 
-        <main class="revista-container">
-            <article class="revista-texts">
-                <h1 data-aos="fade-up" data-aos-delay="0">
-                    Inspire-se com <br><b>nossas obras!</b>
-                </h1>
-                <p data-aos="fade-up" data-aos-delay="300">
-                    Baixe nosso <b>portfólio e conheça projetos</b> que transformam ideias em realidade.
-                </p>
-        
-                <div class="revista-timer">
-        
-                    <div class="revista-meses-dias">
-                        <div class="revista-meses" data-aos="fade-up" data-aos-delay="500">
-                            <span id="meses">0</span>
-                            <p>Meses</p>
-                        </div>
-                        <div class="revista-dias" data-aos="fade-up" data-aos-delay="500">
-                            <span id="dias">0</span>
-                            <p>Dias</p>
-                        </div>
-                    </div>
-        
-                    <div class="revista-horario" data-aos="fade-up" data-aos-delay="700">
-                        <span id="horario">00:00:00</span>
-                    </div>
-                </div>
-        
-                <button class="button-v4" data-aos="fade-up" data-aos-delay="300">
-                    Baixar revista
-                </button>
-            </article>
-        
-            <div class="revista-image">
-                <span>
-                    Novo lançamento no dia: <b id="data-final"></b>
-                </span>
-                <img src="src/assets/capa-da-revista.jpg" alt="revista da construtora k'dea" loading="lazy">
+        <div class="revista-timer">
+          <div class="revista-meses-dias">
+            <div class="revista-meses" data-aos="fade-up" data-aos-delay="500">
+              <span id="meses">0</span>
+              <p>Meses</p>
             </div>
-        </main>
-        
-        
-     </section>
+            <div class="revista-dias" data-aos="fade-up" data-aos-delay="500">
+              <span id="dias">0</span>
+              <p>Dias</p>
+            </div>
+          </div>
+          <div class="revista-horario" data-aos="fade-up" data-aos-delay="700">
+            <span id="horario">00:00:00</span>
+          </div>
+        </div>
+
+        <button class="button-v4" data-aos="fade-up" data-aos-delay="300">
+          Baixar revista
+        </button>
+      </article>
+
+      <div class="revista-image">
+        <span>
+          Novo lançamento no dia: <b id="data-final"></b>
+        </span>
+        <img src="src/assets/capa-da-revista.jpg" alt="revista da construtora k'dea" loading="lazy">
+      </div>
+    </main>
+  </section>
+
+  <!-- Modal para formulário de download -->
+  <div class="formModal">
+    <!-- Seu modal e elementos associados aqui -->
+    <div id="downloadModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Preencha para ver a <b>nova revista</b></h2>
+        <form id="downloadForm">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <label for="telefone">Telefone:</label>
+          <input type="tel" id="telefone" name="telefone" required>
+          <button type="submit">Baixar revista</button>
+        </form>
+        <div id="loading">
+          <div class="spinner"></div>
+          <p>Enviando...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
 
      <section class="footer" id="contato">
         <article class="footer-left">
@@ -667,25 +839,88 @@
             <p data-aos="fade-up" data-aos-delay="100">
                 Todas as informações preenchidas nesse formulário serão usadas apenas para fins de contato, ao enviar você concorda estar ciente com isso.
             </p>
+            <!-- Formulário do Footer -->
             <form class="footer-form" id="contactForm">
                 <div>
-                    <label data-aos="fade-up" data-aos-delay="0">
-                        <span>Seu nome</span>
-                        <input type="text" id="name" placeholder="Digite seu nome aqui" required>
-                    </label>
-                    <label data-aos="fade-up" data-aos-delay="100">
-                        <span>WhatsApp</span>
-                        <input type="tel" id="tel" placeholder="(24) 98141-1940" required>
-                    </label>
+                <label data-aos="fade-up" data-aos-delay="0">
+                    <span>Seu nome</span>
+                    <input type="text" id="name" placeholder="Digite seu nome aqui" required>
+                </label>
+                <label data-aos="fade-up" data-aos-delay="100">
+                    <span>WhatsApp</span>
+                    <input type="tel" id="tel" placeholder="(24) 98141-1940" required>
+                </label>
                 </div>
                 <label data-aos="fade-up" data-aos-delay="200">
-                    <span>Seu melhor e-mail</span>
-                    <input type="email" id="email" placeholder="atendimento@kdea.com.br" required>
+                <span>Seu melhor e-mail</span>
+                <input type="email" id="footer-email" placeholder="atendimento@kdea.com.br" required>
                 </label>
                 <button type="submit" data-aos="fade-up" data-aos-delay="300">
-                    Enviar meus dados para contato
+                Enviar meus dados para contato
                 </button>
+                <!-- (Opcional) Área de Loading para o formulário do footer -->
+                <div id="footerLoading" style="display:none; text-align:center; margin-top:10px;">
+                <div class="spinner" style="border:3px solid #f3f3f3; border-top:3px solid #00d757; border-radius:50%; width:30px; height:30px; animation: spin 1s linear infinite; margin:0 auto;"></div>
+                <p>Enviando...</p>
+                </div>
             </form>
+            
+            <!-- Estilo para o spinner do footer (pode ser ajustado ou integrado aos seus estilos existentes) -->
+            <style>
+                @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+                }
+            </style>
+            
+            <script>
+                // Seleciona o formulário e o container de loading do footer
+                const contactForm = document.getElementById('contactForm');
+                const footerLoading = document.getElementById('footerLoading');
+            
+                contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                console.log('Formulário de contato enviado');
+            
+                // Se desejar, exiba o loading e desabilite o formulário enquanto o envio acontece
+                footerLoading.style.display = 'block';
+                
+                // Opcional: desabilita os inputs para evitar cliques duplicados
+                contactForm.querySelectorAll('input, button').forEach(el => el.disabled = true);
+            
+                // Coleta dos dados dos campos
+                const name = document.getElementById('name').value;
+                const tel = document.getElementById('tel').value;
+                const email = document.getElementById('footer-email').value;
+                console.log('Valores coletados:', { name, tel, email });
+            
+                // Cria os parâmetros para o template do EmailJS – os nomes aqui devem corresponder aos espaços reservados do seu template.
+                const templateParams = {
+                    user_name: name,
+                    user_tel: tel,
+                    user_email: email
+                };
+                console.log('Enviando com os parâmetros:', templateParams);
+            
+                // Envia os dados via EmailJS utilizando um serviço e um template específicos para o footer
+                emailjs.send('service_270g43i', 'template_3b6itap', templateParams)
+                    .then((response) => {
+                    console.log('SUCCESS!', response.status, response.text);
+                    // Remova o loading, reabilite os inputs e exiba uma mensagem de sucesso (ou redirecione se preferir)
+                    footerLoading.style.display = 'none';
+                    contactForm.querySelectorAll('input, button').forEach(el => el.disabled = false);
+                    alert('Dados enviados com sucesso! Em breve entraremos em contato.');
+                    // Limpa o formulário
+                    contactForm.reset();
+                    }, (error) => {
+                    console.log('FAILED...', error);
+                    alert('Erro ao enviar suas informações. Tente novamente.');
+                    footerLoading.style.display = 'none';
+                    contactForm.querySelectorAll('input, button').forEach(el => el.disabled = false);
+                    });
+                });
+            </script>
+  
         </article>
 
         <main class="footer-faq">
