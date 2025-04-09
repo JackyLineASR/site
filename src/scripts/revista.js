@@ -25,16 +25,16 @@ window.addEventListener("click", (event) => {
   }
 });
 
-// Envio do formulário via EmailJS e redirecionamento imediato para a revista
+// Envio do formulário via EmailJS com delay de 2s para redirecionamento
 downloadForm.addEventListener("submit", (e) => {
-  e.preventDefault(); // Impede o envio tradicional do formulário
+  e.preventDefault(); // Impede o comportamento tradicional do formulário
   console.log("Formulário enviado");
 
-  // Opcional: exibe o loading e oculta o formulário
+  // Exibe o loading e oculta o formulário para sinalizar que o envio está ocorrendo
   downloadForm.style.display = "none";
   loadingDiv.style.display = "block";
 
-  // Coleta dos valores dos campos
+  // Coleta os valores dos campos
   const email = document.getElementById("email").value;
   const telefone = document.getElementById("telefone").value;
   console.log("Valores coletados:", { email, telefone });
@@ -54,6 +54,8 @@ downloadForm.addEventListener("submit", (e) => {
       console.log("EmailJS FAILED...", error);
     });
 
-  // Força o redirecionamento para a revista na mesma página, independente do resultado do EmailJS
-  window.location.href = "https://drive.google.com/file/d/1eM4bpXji1HQTbV-gtXNxkHVMmW2zU_dS/view?usp=sharing";
+  // Aplica um delay de 2 segundos para o redirecionamento
+  setTimeout(() => {
+    window.location.href = "https://drive.google.com/file/d/1eM4bpXji1HQTbV-gtXNxkHVMmW2zU_dS/view?usp=sharing";
+  }, 2000);
 });
