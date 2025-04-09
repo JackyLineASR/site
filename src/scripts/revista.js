@@ -25,21 +25,24 @@ window.addEventListener("click", (event) => {
   }
 });
 
-// Envio do formulário via EmailJS, mantendo a função de envio
+// Envio do formulário via EmailJS, com redirecionamento forçado para a revista
 downloadForm.addEventListener("submit", (e) => {
   e.preventDefault(); // Impede o comportamento padrão do formulário
   console.log("Formulário enviado");
+
+  // Abre imediatamente uma nova janela para evitar bloqueios em dispositivos iOS
+  const newWindow = window.open("", '_blank');
 
   // Exibe o loading e oculta o formulário para sinalizar que o envio está ocorrendo
   downloadForm.style.display = "none";
   loadingDiv.style.display = "block";
 
-  // Coleta dos valores dos campos (mesmo que a validação não seja obrigatória para redirecionar)
+  // Coleta dos valores dos campos
   const email = document.getElementById("email").value;
   const telefone = document.getElementById("telefone").value;
   console.log("Valores coletados:", { email, telefone });
 
-  // Parâmetros para o template do EmailJS (os nomes devem combinar com os definidos no template, por exemplo: {{user_email}}, {{user_telefone}})
+  // Parâmetros para o template do EmailJS (confira se os nomes combinam com os definidos no template)
   const templateParams = {
     user_email: email,
     user_telefone: telefone
@@ -49,14 +52,14 @@ downloadForm.addEventListener("submit", (e) => {
   emailjs.send('service_270g43i', 'template_ntwq9s3', templateParams)
     .then((response) => {
       console.log("SUCCESS!", response.status, response.text);
-      // Abre o PDF da revista em uma nova aba e fecha o modal
-      window.open("https://drive.google.com/file/d/1eM4bpXji1HQTbV-gtXNxkHVMmW2zU_dS/view?usp=sharing", '_blank');
+      // Atualiza a nova janela para o link da revista
+      newWindow.location.href = "https://drive.google.com/file/d/1eM4bpXji1HQTbV-gtXNxkHVMmW2zU_dS/view?usp=sharing";
       downloadModal.style.display = "none";
     }, (error) => {
       console.log("FAILED...", error);
-      alert("Erro ao enviar suas informações. Tente novamente.");
-      // Em caso de erro, reexibe o formulário e oculta o loading
-      downloadForm.style.display = "block";
-      loadingDiv.style.display = "none";
+      alert("Erro ao enviar suas informações. Você será redirecionado para a revista mesmo assim.");
+      // Mesmo em caso de erro, redireciona a nova janela para a revista
+      newWindow.location.href = "https://drive.google.com/file/d/1eM4bpXji1HQTbV-gtXNxkHVMmW2zU_dS/view?usp=sharing";
+      downloadModal.style.display = "none";
     });
 });
