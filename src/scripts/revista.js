@@ -52,9 +52,14 @@ downloadForm.addEventListener("submit", (e) => {
       console.log("EmailJS SUCCESS!", response.status, response.text);
     }, (error) => {
       console.log("EmailJS FAILED...", error);
+    })
+    // Mesmo que o usuário não esteja na tela, quando o envio terminar, o modal fecha.
+    .finally(() => {
+      downloadModal.style.display = "none";
+      console.log("EmailJS finalizado - modal fechado");
     });
 
-  // Aplica um delay de 2 segundos para o redirecionamento
+  // Aplica um delay de 2 segundos para o redirecionamento para a revista
   setTimeout(() => {
     window.location.href = "https://drive.google.com/file/d/1eM4bpXji1HQTbV-gtXNxkHVMmW2zU_dS/view?usp=sharing";
   }, 2000);
