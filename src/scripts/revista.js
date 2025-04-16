@@ -65,6 +65,6 @@ downloadForm.addEventListener("submit", (e) => {
   setTimeout(() => {
     downloadModal.style.display = "none";
     resetModal();
-    window.location.href = "https://drive.google.com/file/d/1eM4bpXji1HQTbV-gtXNxkHVMmW2zU_dS/view?usp=sharing";
+    window.location.href = "https://drive.google.com/file/d/1D7qjbRvl3Q31g73dUOafeJDJ59ZSTEyB/view?usp=sharing";
   }, 2000);
 });
